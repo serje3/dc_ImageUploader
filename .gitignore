@@ -1,2 +1,5 @@
 _
 .idea
+secret
+django_image_uploader/media
+venv
