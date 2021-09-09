@@ -1,0 +1,7 @@
+image-uploader/node_modules
+image-uploader/npm-debug.log
+image-uploader/build
+.dockerignore
+**/.git
+**/.DS_Store
+**/node_modules
