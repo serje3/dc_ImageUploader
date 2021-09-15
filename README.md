@@ -54,7 +54,7 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 - [Django](https://www.djangoproject.com/)
 - [nginx](https://nginx.org/ru/)
 - [gunicorn](https://gunicorn.org/)
-- [Postgresql](https://www.postgresql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Features
 
