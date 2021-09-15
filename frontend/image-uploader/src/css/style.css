@@ -1,6 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+JP:wght@500&family=Poppins:wght@500&display=swap');
 
+
+
 html{
   box-sizing: border-box;
 }
@@ -76,6 +78,8 @@ footer{
   letter-spacing: -0.035em;
   text-align: center;
   color: #4F4F4F;
+
+  user-select: none;
 }
 
 .description__workspace{
@@ -89,6 +93,8 @@ footer{
   color: #828282;
 
   margin: 16px auto 30px auto;
+
+  user-select: none;
 
 }
 
@@ -110,6 +116,9 @@ footer{
 
 .image__dnd{
   margin: 36px 112px;
+
+  user-select: none;
+
 }
 
 
@@ -123,6 +132,9 @@ footer{
   letter-spacing: -0.035em;
   text-align: left;
   margin-left: 89px;
+
+  user-select: none;
+
 }
 
 
@@ -136,6 +148,9 @@ footer{
   letter-spacing: -0.035em;
   text-align: center;
   margin-top: 19px;
+
+  user-select: none;
+
 }
 
 .button_container__workspace{
@@ -148,6 +163,7 @@ footer{
   width: 101px;
   height: 32px;
   margin-top: 21px;
+  cursor: pointer;
 
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 12px;
@@ -156,11 +172,15 @@ footer{
   line-height: 16px;
   letter-spacing: -0.035em;
   text-align: center;
+  padding-top:7px;
   color: #FFFFFF;
   background: #2F80ED;
   border-radius: 8px;
+  user-select: none;
+}
 
-  border: none;
+.dnd__workspace.highlight {
+  border-color: purple;
 }
 
 
@@ -170,6 +190,6 @@ footer{
     transform: translate(0,-20%);
   }
   .wrapper{
-    height:90vh;
+    height:80vh;
   }
 }

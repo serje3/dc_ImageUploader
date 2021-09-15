@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/pgdata
+    env_file:
+      - ./env/pg.env
+    restart: always
+  web:
+    build: .
+    env_file:
+      - ./env/pg.env
+      - ./env/server.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    depends_on:
+      - web
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./rest_image_uploader/static/:/static/
