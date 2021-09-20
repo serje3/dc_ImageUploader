@@ -1,5 +1,5 @@
 import React from 'react';
-import image__dnd from '../img/svg/image.svg'
+import image__dnd from '../../img/svg/image.svg'
 
 class DragNDrop extends React.Component{
 
@@ -10,30 +10,30 @@ class DragNDrop extends React.Component{
       idDropArea: 'drop-area'
     }
   }
-
-  uploadFile(file) {
-    const form = document.getElementById('load-file')
-    form.value = file;
-  }
-
-  handleFiles(files) {
-    if (files.length!==0){
-      this.uploadFile(files.item(0))
-    }
-    else {
-      console.error('NO FILES')
-    }
-  }
-
-  handleDrop(e) {
-
-    console.log(e);
-
-    const dt = e.dataTransfer
-    const files = dt.files
-
-    this.handleFiles(files)
-  }
+  //
+  // uploadFile(file) {
+  //   const form = document.getElementById('load-file')
+  //   form.value = file;
+  // }
+  //
+  // handleFiles(files) {
+  //   if (files.length!==0){
+  //     this.uploadFile(files.item(0))
+  //   }
+  //   else {
+  //     console.error('NO FILES')
+  //   }
+  // }
+  //
+  // handleDrop(e) {
+  //
+  //   console.log(e);
+  //
+  //   const dt = e.dataTransfer
+  //   const files = dt.files
+  //
+  //   this.handleFiles(files)
+  // }
 
   preventDefault(dropArea){
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {

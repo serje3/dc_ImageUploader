@@ -9,6 +9,8 @@ COPY entrypoint.sh .
 
 RUN pip install -r requirements.txt
 
+RUN pip freeze > requirements_new.txt
+
 
 RUN chmod +x entrypoint.sh
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]

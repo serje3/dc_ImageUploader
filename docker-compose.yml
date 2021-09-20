@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./backend/data/db:/var/lib/postgresql/data/pgdata
+    env_file:
+      - ./backend/env/pg.env
+    restart: always
+  web:
+    build: ./backend/
+    env_file:
+      - ./backend/env/pg.env
+      - ./backend/env/server.env
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  nginx:
+    build: ./backend/nginx/
+    volumes:
+      - ./backend/rest_image_uploader/static/:/static/
+      - ./backend/rest_image_uploader/media/:/django_media/
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+      - db
+  front-web:
+    build: ./frontend/
+    volumes:
+      - ./frontend/image-uploader/:/front-app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - nginx
+

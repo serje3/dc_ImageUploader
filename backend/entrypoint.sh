@@ -2,9 +2,7 @@
 
 cd rest_image_uploader || exit
 
-pwd
-echo "-----------"
-ls static
+
 
 python manage.py makemigrations --no-input
 python manage.py migrate --no-input
