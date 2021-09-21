@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://github.com/serje3/dc_ImageUploader/tree/master/demo">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/serje3/dc_ImageUploader">
       Solution
     </a>
     <span> | </span>
@@ -66,17 +66,35 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/serje3/dc_ImageUploader
+$ cd dc_ImageUploader/
+# Create files backend/env/pg.env and backend/env/server.env 
+$ touch backend/env/pg.env backend/env/server.env
+$ echo "POSTGRES_DB={db_name} 
+        POSTGRES_USER={user_name}
+        POSTGRES_PASSWORD={password}
+        PGDATA=/var/lib/postgresql/data/pgdata" >> backend/env/pg.env
+$ echo "IP=web
+        PORT=8000
+        DEBUG=1
+        SECRET_KEY={django-secret-key}" >> backend/env/server.env
+```
 
-# Install dependencies
-$ npm install
+#### If you have [make](https://www.gnu.org/software/make/) installed
+```bash
+$ make build
 
-# Run the app
-$ npm start
+$ make start
+```
+#### If not =>
+```bash
+$ sudo docker-compose build --no-cache
+
+$ sudo docker-compose up
 ```
 
 ## Acknowledgements
