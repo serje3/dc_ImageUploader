@@ -1,4 +1,5 @@
 _
+*/__pycache__
 .idea
 backend/.idea
 backend/env/*
@@ -6,8 +7,9 @@ backend/venv
 backend/data
 backend/rest_image_uploader/rest_image_uploader/__pycache__/*
 backend/rest_image_uploader/static/*
-backend/rest_image_uploader/media/* 
+backend/rest_image_uploader/media/*
 test.txt
 frontend/.idea
 frontend/image-uploader/node_modules
 venv
+migrations

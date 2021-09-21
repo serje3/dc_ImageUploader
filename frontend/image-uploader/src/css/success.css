@@ -38,6 +38,9 @@
     width: 100%;
     height: 224px;
     background-size: cover;
+    background-color: #1b1b1b;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
     border-radius: 12px;
 }

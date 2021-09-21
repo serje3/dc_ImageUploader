@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/serje3/dc_ImageUploader">
+    <a href="https://github.com/serje3/dc_ImageUploader/">
       Solution
     </a>
     <span> | </span>

@@ -108,6 +108,7 @@ footer{
 
 .base__dnd{
   border-radius: inherit;
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: #F6F8FB;
@@ -183,6 +184,22 @@ footer{
   border-color: purple;
 }
 
+.dropper__dnd{
+  display: block;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 100;
+  top: 0;
+  border-radius: 12px;
+  transition: background-color 200ms ease-in;
+
+}
+
+.hovered {
+  background: rgba(140,140,140,0.3);
+  transition: background-color 200ms ease-in;
+}
 
 @media screen and (max-width:500px) {
   .base-block{

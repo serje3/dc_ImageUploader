@@ -3,11 +3,6 @@ import DragNDrop from './dragndrop.js'
 import $ from 'jquery'
 
 class UploadForm extends React.Component{
-  // constructor(props) {
-  //   super(props);
-  //   this.props = props
-  // }
-
 
   openFileManager(){
     const fileInput = document.getElementById('load-file')
@@ -18,12 +13,13 @@ class UploadForm extends React.Component{
     }
   }
 
-  submitFile(value){
-    const fileData = $('#load-file').prop('files')[0];
+  submitFile(){
+    const fileData = $('#load-file').prop('files');
 
     const formData = new FormData();
 
-    formData.append('url', fileData);
+
+    formData.append('url', fileData[0]);
 
     this.props.handleAjaxRequest(formData)
 

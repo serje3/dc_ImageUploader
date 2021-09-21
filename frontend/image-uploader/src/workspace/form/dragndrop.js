@@ -7,65 +7,55 @@ class DragNDrop extends React.Component{
     super(props)
 
     this.state = {
-      idDropArea: 'drop-area'
+      idDropArea: '#drop-area',
     }
   }
-  //
-  // uploadFile(file) {
-  //   const form = document.getElementById('load-file')
-  //   form.value = file;
-  // }
-  //
-  // handleFiles(files) {
-  //   if (files.length!==0){
-  //     this.uploadFile(files.item(0))
-  //   }
-  //   else {
-  //     console.error('NO FILES')
-  //   }
-  // }
-  //
-  // handleDrop(e) {
-  //
-  //   console.log(e);
-  //
-  //   const dt = e.dataTransfer
-  //   const files = dt.files
-  //
-  //   this.handleFiles(files)
-  // }
 
-  preventDefault(dropArea){
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      dropArea.addEventListener(eventName, (ev)=>{
-        ev.preventDefault()
-        ev.stopPropagation()
-      }, false)
-    })
-
+  handleEnterEvent = event => {
+    event.target.classList.add('hovered')
   }
+
+  handleLeaveEvent = event => {
+    event.target.classList.remove('hovered')
+  }
+
+  handleDropEvent = event => {
+    event.preventDefault();
+    event.target.classList.remove('hovered')
+
+    const inputElem = document.getElementById('load-file')
+    inputElem.files =event.dataTransfer.files
+    const changeEvent = new Event('change', { bubbles: true, cancelable: false })
+    inputElem.dispatchEvent(changeEvent)
+  }
+
+
 
   componentDidMount(){
-    const dropArea = document.getElementById(this.state.idDropArea)
-    this.preventDefault(dropArea)
+    this.setState({dropTarget: document.querySelector(this.state.idDropArea)})
 
-    ;['dragenter', 'dragover'].forEach(eventName => {
-      dropArea.addEventListener(eventName, highlight, false)
-    })
-
-    ;['dragleave', 'drop'].forEach(eventName => {
-      dropArea.addEventListener(eventName, unhighlight, false)
-    })
-
-    function highlight(e) {
-      dropArea.classList.add('highlight')
+    const bindDragCallback = (target, callback) => {
+      if (target.isEqualNode(this.state.dropTarget)){
+        callback();
+      }
     }
 
-    function unhighlight(e) {
-      console.log(e);
+    window.addEventListener("dragover",function(e){
+      e.preventDefault();
 
-      dropArea.classList.remove('highlight')
-    }
+    },false);
+
+    window.addEventListener("dragenter", (e)=>
+        bindDragCallback(e.target, this.handleEnterEvent.bind(this,e))
+    );
+
+    window.addEventListener("dragleave", (e)=>
+        bindDragCallback(e.target, this.handleLeaveEvent.bind(this,e))
+    );
+
+    window.addEventListener("drop",(e) =>
+        bindDragCallback(e.target, this.handleDropEvent.bind(this,e))
+    ,false);
 
   }
 
@@ -75,9 +65,10 @@ class DragNDrop extends React.Component{
 
     return(
       <div className="dnd__workspace">
-        <div id={this.state.idDropArea} className="base__dnd">
+        <div className="base__dnd">
           <img src={image__dnd} className="image__dnd" alt="mountains and clouds" draggable='false'/>
           <div className="text__dnd">Drag & Drop your image here</div>
+          <div id={this.state.idDropArea.slice(1)} className='dropper__dnd'/>
         </div>
       </div>
     )

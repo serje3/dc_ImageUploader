@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function LoadPage() {
      return [
-            <div className="load__text">Uploading...</div>,
-            <div className="load__panel_background">
+            <div key={0} className="load__text">Uploading...</div>,
+            <div key={1} className="load__panel_background">
                 <div className="load__panel">
                 </div>
             </div>

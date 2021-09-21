@@ -3,6 +3,7 @@ import {PageStatus} from "../utils/enums";
 import BasePage from './pages/base'
 import LoadPage from './pages/load'
 import SuccessPage from './pages/success'
+// import getCookie from "../utils/cookies";
 import $ from "jquery";
 
 class PageManager extends React.Component{
@@ -18,7 +19,7 @@ class PageManager extends React.Component{
 
     handleAjaxRequest = (formData) =>{
         this.props.onPageStatusChanged(PageStatus.Load)
-        const handleAjaxResponse = this.handleAjaxResponse;
+        const self = this;
         $.ajax({
               url: 'http://localhost/api/image',
               method: 'post',
@@ -28,15 +29,18 @@ class PageManager extends React.Component{
               data:formData,
 
               success: function (data){
-                  console.log('success')
-                handleAjaxResponse({
+                self.handleAjaxResponse({
                     ...data,
                     status:201
                 })
+                self.preloadImage(self.state.url)
+                    .then((imgObject)=>{
+                        self.setState({imgObject})
+                        setTimeout(self.props.onPageStatusChanged, 500,PageStatus.Success)
+                    })
               },
               error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
-                  console.log(jqXHR, exception)
                   alert('Not connect. Verify Network.');
                 } else if (jqXHR.status === 404) {
                   alert('Requested page not found (404).');
@@ -62,14 +66,6 @@ class PageManager extends React.Component{
             status: response.status,
         })
 
-        console.log(response)
-
-        this.preloadImage(this.state.url)
-            .then((imgObject)=>{
-                console.log('then')
-                this.setState({imgObject})
-                this.props.onPageStatusChanged(PageStatus.Success)
-            })
     }
 
     preloadImage = (url) => new Promise((resolve, reject)=>{
