@@ -15,7 +15,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/serje3/dc_ImageUploader/">
+    <a href="https://dc-image-uploader.netlify.app/">
       Solution
     </a>
     <span> | </span>
