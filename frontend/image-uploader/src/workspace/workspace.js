@@ -4,69 +4,25 @@ import BasePage from './pages/base'
 import LoadPage from './pages/load'
 import SuccessPage from './pages/success'
 // import getCookie from "../utils/cookies";
-import $ from "jquery";
+import AjaxManager from '../utils/mixins' ;
 
-class PageManager extends React.Component{
+
+class PageManager extends React.Component //+ AjaxManagerMixin
+{
     constructor(props) {
         super(props);
 
         this.state = {
+            // default image
             url:'https://images.unsplash.com/photo-1563769874036-8f569cb59d30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
-            status:200,
-            isLoaded:false
-        }
-    }
-
-    handleAjaxRequest = (formData) =>{
-        this.props.onPageStatusChanged(PageStatus.Load)
-        const self = this;
-        $.ajax({
-              url: 'http://localhost/api/image',
-              method: 'post',
-              type:'POST',
-              contentType: false,
-              processData: false,
-              data:formData,
-
-              success: function (data){
-                self.handleAjaxResponse({
-                    ...data,
-                    status:201
-                })
-                self.preloadImage(self.state.url)
-                    .then((imgObject)=>{
-                        self.setState({imgObject})
-                        setTimeout(self.props.onPageStatusChanged, 500,PageStatus.Success)
-                    })
-              },
-              error: function (jqXHR, exception) {
-                if (jqXHR.status === 0) {
-                  alert('Not connect. Verify Network.');
-                } else if (jqXHR.status === 404) {
-                  alert('Requested page not found (404).');
-                } else if (jqXHR.status === 500) {
-                  alert('Internal Server Error (500).');
-                } else if (exception === 'parsererror') {
-                  alert('Requested JSON parse failed.');
-                } else if (exception === 'timeout') {
-                  alert('Time out error.');
-                } else if (exception === 'abort') {
-                  alert('Ajax request aborted.');
-                } else {
-                  alert('Uncaught Error. ' + jqXHR.responseText);
-                }
-              }
-        })
+            status:200
         }
 
-    handleAjaxResponse = response => {
-        this.setState({
-            url: response.url,
-            imgObject: null,
-            status: response.status,
-        })
 
+        this.handleAjaxRequest = (formData) => AjaxManager.handleAjaxRequest(this,formData)
+        this.handleAjaxResponse = (response) => AjaxManager.handleAjaxResponse(this, response)
     }
+
 
     preloadImage = (url) => new Promise((resolve, reject)=>{
         const imageToPreload = new Image();
@@ -105,5 +61,7 @@ class PageManager extends React.Component{
         );
     }
 }
+
+
 
 export default PageManager;

@@ -1,13 +1,16 @@
 build:
 	sudo docker-compose build
 up:
-	sudo docker-compose up
+	sudo docker-compose up --remove-orphans
 down:
 	sudo docker-compose down
 
-rb:
-	make build
-	make up
+build-up:
+	sudo docker-compose up --build --remove-orphans
+
+react-build:
+	sudo docker-compose run front-web npm run build
+	cd frontend/image-uploader/build && ~/Dev/Reps/mkcert/mkcert localhost
 
 permissions:
 	sudo chown -R serje3:serje3 .

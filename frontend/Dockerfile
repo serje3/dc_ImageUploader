@@ -3,9 +3,11 @@ WORKDIR /front-app
 ENV PATH /front-app/node_modules/.bin:$PATH
 COPY image-uploader/package*.json ./
 
-RUN npm build
+RUN npm install
 
 COPY ./image-uploader/ ./
 
 
-CMD ["npm", "start"]
+#only for dev
+CMD npm start
+

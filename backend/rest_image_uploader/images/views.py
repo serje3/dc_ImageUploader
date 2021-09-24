@@ -11,5 +11,6 @@ class CreateImage(CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
+        print(request.data['url'].image)
         print(response.data)
         return response

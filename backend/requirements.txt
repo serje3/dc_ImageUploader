@@ -4,3 +4,4 @@ djangorestframework
 django-cors-headers
 Pillow
 gunicorn
+coverage

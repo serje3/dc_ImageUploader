@@ -6,8 +6,11 @@ backend/env/*
 backend/venv
 backend/data
 backend/rest_image_uploader/rest_image_uploader/__pycache__/*
+backend/rest_image_uploader/__pycache__
+backend/rest_image_uploader/images/__pycache__
 backend/rest_image_uploader/static/*
 backend/rest_image_uploader/media/*
+backend/rest_image_uploader/annotates
 test.txt
 frontend/.idea
 frontend/image-uploader/node_modules

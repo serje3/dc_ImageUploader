@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = int(os.environ['DEBUG'])
 
+ALLOWED_HOSTS = [os.environ['IP']]
 
-ALLOWED_HOSTS = [os.environ['IP'], 'localhost', '0.0.0.0']
+USE_X_FORWARDED_PORT = 2000
 
 
 # Application definition
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
 
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://172.*.0.*:3000',
+    'http*://localhost',
 ]
 
 REST_FRAMEWORK = {
@@ -152,6 +153,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   db:
-    image: postgres
+    image: postgres:13.4
     volumes:
       - ./backend/data/db:/var/lib/postgresql/data/pgdata
     env_file:
@@ -10,6 +10,7 @@ services:
     restart: always
   web:
     build: ./backend/
+    image: serje3/image-uploader-back
     env_file:
       - ./backend/env/pg.env
       - ./backend/env/server.env
@@ -21,20 +22,28 @@ services:
       - db
   nginx:
     build: ./backend/nginx/
+    image: serje3/image-uploader-nginx
     volumes:
       - ./backend/rest_image_uploader/static/:/static/
       - ./backend/rest_image_uploader/media/:/django_media/
+      - ./frontend/image-uploader/build/:/var/www/image-uploader/
     ports:
       - "80:80"
+      - "443:443"
+      - "2000:2000"
     depends_on:
       - web
       - db
+#  certbot:
+#    image: certbot/certbot
   front-web:
     build: ./frontend/
+    image: serje3/image-uploader-front
+    env_file:
+      - ./frontend/env/client.env
     volumes:
       - ./frontend/image-uploader/:/front-app
     ports:
       - "3001:3000"
     depends_on:
       - nginx
-
