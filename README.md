@@ -105,6 +105,8 @@ $ sudo docker-compose up
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
 
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Django docs](https://docs.djangoproject.com/en/3.2/)
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
