@@ -52,7 +52,7 @@ class AjaxManager{
         const response_url = process.env.NODE_ENV === 'development'?
             response.url.replace('localhost', 'localhost:2000'):
             //change to default next time
-            response.url.replace('localhost', 'localhost:2000')
+            response.url.replace('http://', 'https://')
 
         self.setState({
             url: response_url,

@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+build/localhost-key.pem
+build/localhost.pem
 
 # misc
 .DS_Store

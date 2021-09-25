@@ -15,4 +15,3 @@ test.txt
 frontend/.idea
 frontend/image-uploader/node_modules
 venv
-migrations

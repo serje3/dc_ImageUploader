@@ -10,7 +10,7 @@ build-up:
 
 react-build:
 	sudo docker-compose run front-web npm run build
-	cd frontend/image-uploader/build && ~/Dev/Reps/mkcert/mkcert localhost
+	cd frontend/image-uploader/build
 
 permissions:
 	sudo chown -R serje3:serje3 .

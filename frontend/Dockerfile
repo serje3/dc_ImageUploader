@@ -9,5 +9,5 @@ COPY ./image-uploader/ ./
 
 
 #only for dev
-CMD npm start
+#CMD npm start
 
