@@ -6,7 +6,7 @@ class AjaxManager{
         self.props.onPageStatusChanged(PageStatus.Load)
 
         $.ajax({
-              url: 'http://localhost:2000/api/image',
+              url: 'http://151.248.121.170/api/image',
               method: 'post',
               type:'POST',
               contentType: false,
