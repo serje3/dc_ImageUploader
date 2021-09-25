@@ -6,7 +6,7 @@ class AjaxManager{
         self.props.onPageStatusChanged(PageStatus.Load)
 
         $.ajax({
-              url: 'http://151.248.121.170/api/image',
+              url: 'https://151-248-121-170.cloudvps.regruhosting.ru/api/image',
               method: 'post',
               type:'POST',
               contentType: false,
