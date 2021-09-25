@@ -11,7 +11,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://github.com/serje3/dc_ImageUploader/tree/master/demo">
+    <a href="https://github.com/serje3/dc_ImageUploader/tree/master/demo/screenshots">
       Demo
     </a>
     <span> | </span>
@@ -42,12 +42,9 @@
 
 ![screenshot](https://raw.githubusercontent.com/serje3/dc_ImageUploader/master/demo/img/screenshot.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+My project is hosted on two servers:
+On the first https://dc-image-uploader.netlify.app/ the frontend folder is deployed, 
+On the second https://151-248-121-170.cloudvps.regruhosting.ru/ the folder with the backend and image storage.
 
 ### Built With
 
@@ -89,13 +86,17 @@ $ echo "IP=web
 
 #### If you have [make](https://www.gnu.org/software/make/) installed
 ```bash
+$ make react-build
+
 $ make build
 
-$ make start
+$ make up
 ```
 #### If not =>
 ```bash
-$ sudo docker-compose build --no-cache
+$ sudo docker-compose run front-web npm run build
+
+$ sudo docker-compose build
 
 $ sudo docker-compose up
 ```
