@@ -46,6 +46,8 @@ My project is hosted on two servers:
 On the first https://dc-image-uploader.netlify.app/ the frontend folder is deployed, 
 On the second https://151-248-121-170.cloudvps.regruhosting.ru/ the folder with the backend and image storage.
 
+Work algorithm: a POST Ajax request is sent from the frontend to /api/image of the backend, with the image. The backend saves the resulting image to storage and saves a link to this image to the database and sends the response as this link.
+
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
