@@ -2,6 +2,9 @@
 
 <h1 align="center">Image Uploader by Serje3</h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8fc5712-82ca-4d49-8f86-f96422585afb/deploy-status)](https://app.netlify.com/sites/image-uploader-5bd5e3/deploys)
+
+
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
 </div>
@@ -12,7 +15,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/serje3/dc_ImageUploader/">
+    <a href="https://dc-image-uploader.netlify.app/">
       Solution
     </a>
     <span> | </span>
